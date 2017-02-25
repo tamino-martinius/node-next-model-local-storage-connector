@@ -1,6 +1,6 @@
 {
   "name": "next-model-local-storage-connector",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "LocalStorage connector for next-model package.",
   "author": "Tamino Martinius <dev@zaku.eu>",
   "license": "MIT",
