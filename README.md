@@ -420,3 +420,4 @@ See [history](TODO) for more details.
 
 * `0.1.0` **2017-02-25** First release compatible with NextModel 0.2.0
 * `0.2.0` **2017-02-25** Added missing dependency for CI
+* `0.3.0` **2017-02-25** Improved browser compatibility

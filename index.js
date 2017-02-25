@@ -1,23 +1,13 @@
 'use strict';
 
-const context = (typeof window === 'object' && window) || {};
+(function() {
+  const context = (typeof window === 'object' && window) || {};
 
-if (typeof require === 'function') {
-  context.lodash = require('lodash');
-}
+  if (typeof require === 'function') {
+    context.lodash = require('lodash');
+  }
 
-context.lodash = context.lodash || context._;
-
-if (typeof module === 'object') {
-  context.module = module;
-  context.exportKey = 'exports';
-} else {
-  context.module = window;
-  context.exportKey = 'NextModelLocalStorageConnector';
-}
-
-(function(context) {
-  const lodash = context.lodash;
+  const lodash = context.lodash || context._;
   const assign = lodash.assign;
   const filter = lodash.filter;
   const findIndex = lodash.findIndex;
@@ -41,7 +31,7 @@ if (typeof module === 'object') {
   const unionBy = lodash.unionBy;
   const values = lodash.values;
 
-  context.module[context.exportKey] = class NextModelLocalStorageConnector {
+  const NextModelLocalStorageConnector = class NextModelLocalStorageConnector {
 
     // Static functions
 
@@ -279,4 +269,10 @@ if (typeof module === 'object') {
       return Promise.resolve(klass);
     }
   };
-}(context));
+
+  if (typeof module === 'object') {
+    module.exports = NextModelLocalStorageConnector;
+  } else {
+    context.NextModelLocalStorageConnector = NextModelLocalStorageConnector;
+  }
+}());
