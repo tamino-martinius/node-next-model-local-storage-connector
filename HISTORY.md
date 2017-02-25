@@ -5,6 +5,10 @@
 Add new queries for
 * `$exists`
 
+## v0.2.0
+
+Added `expect-change@0.0.1` which was missing in the previous release
+
 ## v0.1.0
 
 First release compatible with NextModel **0.2.0**.
