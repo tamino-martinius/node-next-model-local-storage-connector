@@ -84,7 +84,21 @@ describe('NextModelLocalStorageConnector', function() {
 
   def('User', () => $User);
 
-  describe('.query', function() {
+  describe('.getNextId()', function() {
+    subject(() => () => $connector.getNextId($User));
+    def('tableName', () => 'users');
+
+    beforeEach(function() {
+      delete MockedConnector.users;
+    });
+
+    it('increments identifier', function() {
+      expect($subject()).to.eql(1);
+      expect($subject()).to.eql(2);
+    });
+  });
+
+  describe('.filter()', function() {
     subject(() => $connector.all($User));
 
     it('returns empty array', function() {
@@ -432,7 +446,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.all', function() {
+  describe('.all()', function() {
     subject(() => $connector.all($User));
 
     it('returns empty array', function() {
@@ -480,7 +494,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.first', function() {
+  describe('.first()', function() {
     subject(() => $connector.first($User));
 
     it('returns empty array', function() {
@@ -528,7 +542,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.last', function() {
+  describe('.last()', function() {
     subject(() => $connector.last($User));
 
     it('returns las item of filters rows', function() {
@@ -584,7 +598,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.count', function() {
+  describe('.count()', function() {
     subject(() => $connector.count($User));
 
     it('returns zero', function() {
@@ -616,7 +630,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.save', function() {
+  describe('.save()', function() {
     def('user', () => $User.build({ name: 'foo' }))
     subject(() => $connector.save($user));
 
@@ -654,7 +668,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.delete', function() {
+  describe('.delete()', function() {
     def('user', () => $User.build({ name: 'foo' }))
     subject(() => $connector.delete($user));
 
@@ -682,7 +696,7 @@ describe('NextModelLocalStorageConnector', function() {
     });
   });
 
-  describe('.createTable', function() {
+  describe('.createTable()', function() {
     subject(() => $connector.createTable($User));
     def('tableName', () => 'users');
 

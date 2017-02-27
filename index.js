@@ -28,6 +28,7 @@
   const remove = lodash.remove;
   const startsWith = lodash.startsWith;
   const union = lodash.unionBy;
+  const upperFirst = lodash.upperFirstBy;
   const unionBy = lodash.unionBy;
   const values = lodash.values;
 
@@ -51,13 +52,18 @@
       return this.prefix + Klass.tableName + this.postfix;
     }
 
+    getNextId(Klass) {
+      const key = this.storageKey(Klass) + '__nextId';
+      const nextId = this.constructor.localStorage.getItem(key) * 1 || 1;
+      this.constructor.localStorage.setItem(key, nextId + 1);
+      return nextId;
+    }
+
     getStorage(Klass) {
       const key = this.storageKey(Klass);
       if (!this.cache[key]) {
         const data = this.constructor.localStorage.getItem(key) || '[]';
         this.cache[key] = JSON.parse(data);
-        const nextId = maxBy(this.cache[key], Klass.identifier) + 1 || 1;
-        this.cache[key].nextId = nextId;
       }
       return this.cache[key];
     }
@@ -251,7 +257,7 @@
       const Klass = klass.constructor;
       const cache = this.getStorage(Klass);
       const data = klass.databaseAttributes;
-      data[Klass.identifier] = klass[Klass.identifier] = cache.nextId++;
+      data[Klass.identifier] = klass[Klass.identifier] = this.getNextId(Klass);
       cache.push(data);
       this.setStorage(Klass);
       return Promise.resolve(klass);
