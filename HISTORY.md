@@ -5,6 +5,10 @@
 Add new queries for:
 * `$exists`
 
+## v0.4.1
+
+Updated next-model dependency to `v0.3.0`
+
 ## v0.4.0
 
 Stored nextId separately in LocalStorage.
