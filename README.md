@@ -422,4 +422,5 @@ See [history](TODO) for more details.
 * `0.2.0` **2017-02-25** Added missing dependency for CI
 * `0.3.0` **2017-02-25** Improved browser compatibility
 * `0.4.0` **2017-02-27** Stored nextId separately
-* `0.4.1` **2017-02-28** Updated next-model dependency
+* `0.4.1` **2017-02-27** Updated next-model dependency
+* `0.4.2` **2017-02-28** Updated next-model dependency
