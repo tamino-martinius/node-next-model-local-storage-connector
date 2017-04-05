@@ -27,7 +27,6 @@ Special keys for queries:
 See [GitHub project](https://github.com/tamino-martinius/node-next-model-local-storage-connector/projects/1) for current progress/tasks
 
 * Fix Typos
-* CI is missing for some Databases
 * Add more **examples**
 * Add **exists**, **join** and **subqueries**
 * There are already some **tests**, but not every test case is covered.
@@ -416,7 +415,7 @@ User.where({ $filter: (item) => {
 
 ## Changelog
 
-See [history](TODO) for more details.
+See [history](HISTORY.md) for more details.
 
 * `0.1.0` **2017-02-25** First release compatible with NextModel 0.2.0
 * `0.2.0` **2017-02-25** Added missing dependency for CI
