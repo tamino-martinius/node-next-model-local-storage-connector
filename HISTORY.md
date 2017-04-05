@@ -5,6 +5,10 @@
 Add new queries for:
 * `$exists`
 
+## v0.4.3
+
+Updated next-model dependency to `v0.4.1`
+
 ## v0.4.2
 
 Updated next-model dependency to `v0.4.0`
